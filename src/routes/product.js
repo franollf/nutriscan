@@ -30,6 +30,7 @@ router.get("/:barcode", async (req, res) => {
       protein: p.nutriments?.proteins_100g ?? null,
       carbs: p.nutriments?.carbohydrates_100g ?? null,
       fat: p.nutriments?.fat_100g ?? null,
+      sugar: p.nutriments?.["sugars_100g"] || 0,
       servingSize: p.serving_size || "100g",
       raw: p,
     };

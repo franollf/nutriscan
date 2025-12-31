@@ -4,6 +4,7 @@ const productSchema = new mongoose.Schema({
   barcode: { type: String, required: true, unique: true },
   name: String,
   brand: String,
+  sugar: Number,
   calories: Number,
   protein: Number,
   carbs: Number,

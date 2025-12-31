@@ -9,6 +9,7 @@ const itemSchema = new mongoose.Schema({
   carbs: Number,
   protein: Number,
   fat: Number,
+  sugar: Number,
   // store raw external API response if helpful
   raw: mongoose.Schema.Types.Mixed
 });

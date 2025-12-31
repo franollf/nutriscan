@@ -16,12 +16,15 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(initialUser);
 
   const login = async (email, password) => {
-    const res = await api.post("/auth/login", { email, password });
-    // expects: { token, user } from backend
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
-    setUser(res.data.user);
-  };
+  const res = await api.post("/auth/login", { email, password });
+
+  console.log("LOGIN RESPONSE:", res.data);
+
+  localStorage.setItem("token", res.data.token);
+  localStorage.setItem("user", JSON.stringify(res.data.user));
+  setUser(res.data.user);
+};
+
 
   const register = async (name, email, password) => {
     // expects /api/auth/register

@@ -81,6 +81,7 @@ export default function Scan() {
 
     setProduct({
       name: p.name,
+      sugar: p.sugar,
       calories: p.calories,
       protein: p.protein,
       carbs: p.carbs,
@@ -93,6 +94,34 @@ export default function Scan() {
     setLoading(false);
   }
 };
+
+/* -------------------- ADD TO TODAY -------------------- */
+const addToToday = async () => {
+  if (!product) return;
+
+  try {
+    await api.post("/log", {
+      date: new Date(),
+      items: [
+        {
+          name: product.name,
+          sugar: product.sugar,
+          calories: product.calories,
+          protein: product.protein,
+          carbs: product.carbs,
+          fat: product.fat,
+        },
+      ],
+    });
+
+    alert("Added to Today!");
+  } catch (err) {
+    console.error("LOG ERROR FULL:", err);
+    console.error("LOG ERROR RESPONSE:", err?.response);
+    alert("Failed to add log");
+  }
+};
+
 
 
   /* -------------------- RESET SCAN -------------------- */
@@ -131,14 +160,22 @@ export default function Scan() {
 
       {/* PRODUCT INFO */}
       {product && (
-        <div className="border rounded p-4 mt-4">
-          <h2 className="font-semibold mb-2">{product.name}</h2>
-          <p>Calories: {product.calories ?? "N/A"}</p>
-          <p>Protein: {product.protein ?? "N/A"} g</p>
-          <p>Carbs: {product.carbs ?? "N/A"} g</p>
-          <p>Fat: {product.fat ?? "N/A"} g</p>
-        </div>
-      )}
+  <div className="border rounded p-4 mt-4">
+    <h2 className="font-semibold mb-2">{product.name}</h2>
+    <p>Calories: {product.calories ?? "N/A"}</p>
+    <p>Protein: {product.protein ?? "N/A"} g</p>
+    <p>Carbs: {product.carbs ?? "N/A"} g</p>
+    <p>Fat: {product.fat ?? "N/A"} g</p>
+
+    <button
+      onClick={addToToday}
+      className="mt-4 bg-blue-600 text-white px-4 py-2 rounded"
+    >
+      Add to Today
+    </button>
+  </div>
+)}
+
 
       {/* MANUAL ENTRY */}
       <div className="mt-6">

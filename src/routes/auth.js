@@ -47,7 +47,11 @@ router.post('/register', async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
     });
 
-    res.status(201).json({ user: { id: user._id, email: user.email, name: user.name } });
+    res.status(201).json({
+  token,
+  user: { id: user._id, email: user.email, name: user.name }
+});
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
@@ -75,7 +79,11 @@ router.post('/login', async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24 * 7
     });
 
-    res.json({ user: { id: user._id, email: user.email, name: user.name } });
+    res.json({
+  token,
+  user: { id: user._id, email: user.email, name: user.name }
+});
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
