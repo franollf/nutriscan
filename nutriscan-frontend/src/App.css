@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes scan {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-scan {
+  animation: scan 2s ease-in-out infinite;
+}
