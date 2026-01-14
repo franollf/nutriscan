@@ -57,6 +57,16 @@ export default function Navigation() {
               Scan
             </Link>
             <Link
+              to="/meals"
+              className={`px-4 py-2 rounded-lg font-medium transition ${
+                isActive("/meals")
+                  ? "bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300"
+                  : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+              }`}
+            >
+              Meals
+            </Link>
+            <Link
               to="/summary"
               className={`px-4 py-2 rounded-lg font-medium transition ${
                 isActive("/summary")

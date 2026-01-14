@@ -5,6 +5,7 @@ import Today from "./pages/today";
 import Scan from "./pages/Scan";
 import Summary from "./pages/summary";
 import Profile from "./pages/profile";
+import Meals from "./pages/meals";
 import ProtectedRoute from "./components/protectedroute";
 import Navigation from "./components/Navigation";
 import MobileNav from "./components/MobileNav";
@@ -24,6 +25,7 @@ export default function App() {
         {/* Protected */}
         <Route path="/today" element={<ProtectedRoute><Today /></ProtectedRoute>} />
         <Route path="/scan" element={<ProtectedRoute><Scan /></ProtectedRoute>} />
+        <Route path="/Meals" element={<ProtectedRoute><Meals /></ProtectedRoute>} />
         <Route path="/summary" element={<ProtectedRoute><Summary /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 
